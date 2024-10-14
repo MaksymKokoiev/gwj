@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://byltxs7vpqgrg"]
+[gd_scene load_steps=6 format=3 uid="uid://byltxs7vpqgrg"]
 
 [ext_resource type="Script" path="res://main_menu/new_run.gd" id="1_1alus"]
 [ext_resource type="Script" path="res://oink_mode/oinkmodetoggler.gd" id="2_dpp1p"]
+[ext_resource type="AudioStream" uid="uid://dp2lyfu50oq0t" path="res://main_menu/audio_main_menu/UI_SFX_Hover.wav" id="3_dktak"]
+[ext_resource type="AudioStream" uid="uid://dk6rmne6bp4ty" path="res://main_menu/audio_main_menu/UI_SFX_Select.wav" id="4_31w8t"]
+[ext_resource type="AudioStream" uid="uid://bmru1v0rpodyo" path="res://main_menu/audio_main_menu/UI_SFX_NewRun.wav" id="5_nfgaa"]
 
 [node name="MainMenu" type="Node"]
 
@@ -21,4 +24,18 @@ script = ExtResource("1_1alus")
 [node name="OinkModeToggler" type="Node" parent="."]
 script = ExtResource("2_dpp1p")
 
+[node name="Audio_UI_Hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dktak")
+bus = &"UI_SFX"
+
+[node name="Audio_UI_Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_31w8t")
+bus = &"UI_SFX"
+
+[node name="Audio_UI_NewRun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_nfgaa")
+bus = &"UI_SFX"
+
 [connection signal="button_up" from="NewRun" to="NewRun" method="_on_button_up"]
+[connection signal="mouse_entered" from="NewRun" to="NewRun" method="_on_mouse_entered"]
+[connection signal="pressed" from="NewRun" to="NewRun" method="_on_pressed"]

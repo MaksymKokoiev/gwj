@@ -3,17 +3,13 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
-@onready var SMALL_SCARE_SOUNDS = [
-	$SmallScareSounds/Sound01,
-	$SmallScareSounds/Sound02,
-	$SmallScareSounds/Sound03,
-]
+@onready var SMALL_SCARE_SOUNDS = $SmallScareSounds/Sound01
 
 @onready var small_scare_hit_dealer: HitDealer = $HitDealer
 @onready var small_scare_hit_dealer_collision_shape: CollisionShape2D = $HitDealer/CollisionShape
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var da_pig: Sprite2D = $DaPig
-@onready var settings_manager: SettingsManager = $/root/Main/SettingsManager
+@onready var settings_manager: SettingsManager = $/root/Main/SettingsManage
 
 var scare_on_cooldown = false
 
@@ -29,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		get_tree().create_timer(0.2).timeout.connect(func(): small_scare_hit_dealer_collision_shape.disabled = true)
 		get_tree().create_timer(0.6).timeout.connect(func(): scare_on_cooldown = false)
 		
-		SMALL_SCARE_SOUNDS[randi_range(0, 2)].play()
+		SMALL_SCARE_SOUNDS.play()
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

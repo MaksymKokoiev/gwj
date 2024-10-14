@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b3totobanahjr"]
+[gd_scene load_steps=60 format=3 uid="uid://b3totobanahjr"]
 
 [ext_resource type="Script" path="res://attacks/hitbox.gd" id="1_1k7qj"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_yh1rm"]
@@ -347,6 +347,13 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hl2hw"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_63r7f"]
+random_pitch = 1.05
+streams_count = 3
+stream_0/stream = ExtResource("8_y5e86")
+stream_1/stream = ExtResource("9_apcff")
+stream_2/stream = ExtResource("10_7xnpg")
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_yh1rm")
@@ -394,13 +401,7 @@ flip_h = true
 [node name="SmallScareSounds" type="Node" parent="."]
 
 [node name="Sound01" type="AudioStreamPlayer" parent="SmallScareSounds"]
-stream = ExtResource("8_y5e86")
-
-[node name="Sound02" type="AudioStreamPlayer" parent="SmallScareSounds"]
-stream = ExtResource("9_apcff")
-
-[node name="Sound03" type="AudioStreamPlayer" parent="SmallScareSounds"]
-stream = ExtResource("10_7xnpg")
+stream = SubResource("AudioStreamRandomizer_63r7f")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
